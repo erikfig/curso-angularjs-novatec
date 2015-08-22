@@ -4,43 +4,11 @@
 	<meta charset="UTF-8">
 	<title>Hello World</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
-	<script>
-		var helloWorld = angular.module('HelloWorld', []);
-
-		helloWorld.controller('helloWorldCtrl', function($scope){
-			var list = [
-				{name: 'Alexandre', idade: 22},
-				{name: 'Alex', idade: 33},
-				{name: 'Anielle', idade: 27}
-			];
-
-
-			$scope.inserir = function(){
-				$scope.list.push($scope.obj);
-				$scope.obj = null;
-			}
-
-			$scope.remover = function(k) {
-
-				$scope.list.splice(k, 1);
-			}
-
-			$scope.list = list;
-		});
-
-		helloWorld.controller('helloWorldNames', function($scope){
-			$scope.name = '';
-			$scope.lastname = '';
-
-			$scope.update = function()
-			{
-				$scope.fullName = $scope.name + ' ' + $scope.lastname;
-			}
-		});
-	</script>
+	<script src="script.js"></script>
 </head>
-<body>
-	<div ng-controller="helloWorldNames">
+<body ng-controller="MestreCtrl">
+	<a href="" ng-click="toggle(true)">mostrar nome</a> - <a href="" ng-click="toggle(false)">mostrar lista</a>
+	<div ng-controller="helloWorldNames" ng-show="visible">
 		<input type="text" ng-model="name">
 		<input type="text" ng-model="lastname">
 		<input type="button" value="Salvar" ng-click="update()">
@@ -49,7 +17,7 @@
 		Olá {{ fullName }}
 	</div>
 	<hr>
-	<div ng-controller="helloWorldCtrl">
+	<div ng-controller="helloWorldCtrl" ng-hide="visible">
 		<input type="text" ng-model="obj.name">
 		<input type="text" ng-model="obj.idade">
 		<input type="button" value="Inserir" ng-click="inserir()">
