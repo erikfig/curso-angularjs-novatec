@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="HelloWorld">
+<head>
+	<meta charset="UTF-8">
+	<title>Hello World</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+	<script>
+		var helloWorld = angular.module('HelloWorld', []);
+
+		helloWorld.controller('helloWorldCtrl', function($scope){
+			var list = [
+				{name: 'Alexandre', idade: 22},
+				{name: 'Alex', idade: 33},
+				{name: 'Anielle', idade: 27}
+			];
+			$scope.list = list;
+		});
+
+		helloWorld.controller('helloWorldNames', function($scope){
+			$scope.name = '';
+			$scope.lastname = '';
+
+			$scope.update = function()
+			{
+				$scope.fullName = $scope.name + ' ' + $scope.lastname;
+			}
+		});
+	</script>
+</head>
+<body>
+	<div ng-controller="helloWorldNames">
+		<input type="text" ng-model="name">
+		<input type="text" ng-model="lastname">
+		<input type="button" value="Salvar" ng-click="update()">
+
+		<hr>
+		Olá {{ fullName }}
+	</div>
+	<hr>
+	<div ng-controller="helloWorldCtrl">
+		<input type="text" ng-model="item">
+		<ul>
+			<li ng-repeat="v in list">{{ v.name }} - {{ v.idade }}</li>
+		</ul>
+	</div>
+
+</body>
+</html>
