@@ -13,6 +13,18 @@
 				{name: 'Alex', idade: 33},
 				{name: 'Anielle', idade: 27}
 			];
+
+
+			$scope.inserir = function(){
+				$scope.list.push($scope.obj);
+				$scope.obj = null;
+			}
+
+			$scope.remover = function(k) {
+
+				$scope.list.splice(k, 1);
+			}
+
 			$scope.list = list;
 		});
 
@@ -38,9 +50,11 @@
 	</div>
 	<hr>
 	<div ng-controller="helloWorldCtrl">
-		<input type="text" ng-model="item">
+		<input type="text" ng-model="obj.name">
+		<input type="text" ng-model="obj.idade">
+		<input type="button" value="Inserir" ng-click="inserir()">
 		<ul>
-			<li ng-repeat="v in list">{{ v.name }} - {{ v.idade }}</li>
+			<li ng-repeat="(k, v) in list">{{ v.name }} - {{ v.idade }} - <a href="" ng-click="remover(k)">x</a></li>
 		</ul>
 	</div>
 
