@@ -2,15 +2,46 @@
 	<head>
 		<title>Formulários</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>	
+		<script src="script.js"></script>
+		<style>
+			input.ng-touched.ng-invalid {
+				outline: 1px solid #c11;
+			}
+		</style>
 	</head>
-	<body>
-		<form action="" novalidate>
-			Nome: <input type="text" ng-model="nome" required><br>
-			Email: <input type="email" ng-model="email" required><br>
-			Senha: <input type="password" ng-model="senha" required><br>
-			Idade: <input type="number" ng-model="idade" required><br>
-			Telefone: <input type="number" ng-model="telefone" required><br>
-			<input type="submit" value="Salvar">
+	<body ng-controller="FormCtrl">
+		<form novalidate name="form">
+			Nome: <input type="text" ng-model="nome" name="nome" required minlength="3">
+			<div>
+				<ul ng-show="form.nome.$dirty">
+					<li ng-repeat="(k, v) in form.nome.$error">{{msg[k]}}</li>
+				</ul>
+			</div>
+			Email: <input type="email" ng-model="email" name="email" required>
+			<div>
+				<ul ng-show="form.email.$dirty">
+					<li ng-repeat="(k, v) in form.email.$error">{{msg[k]}}</li>
+				</ul>
+			</div>		
+			Senha: <input type="password" ng-model="senha" name="senha" required minlength="6">
+			<div>
+				<ul ng-show="form.senha.$dirty">
+					<li ng-repeat="(k, v) in form.senha.$error">{{msg[k]}}</li>
+				</ul>
+			</div>
+			Idade: <input type="number" ng-model="idade" name="idade" required>
+			<div>
+				<ul ng-show="form.idade.$dirty">
+					<li ng-repeat="(k, v) in form.idade.$error">{{msg[k]}}</li>
+				</ul>
+			</div>	
+			Telefone: <input type="number" ng-model="telefone" name="telefone" required minlength="12">
+			<div>
+				<ul ng-show="form.telefone.$dirty">
+					<li ng-repeat="(k, v) in form.telefone.$error">{{msg[k]}}</li>
+				</ul>
+			</div>	
+			<input type="button" value="Salvar" ng-disabled="form.$invalid">
 		</form>
 	</body>
 </html>
