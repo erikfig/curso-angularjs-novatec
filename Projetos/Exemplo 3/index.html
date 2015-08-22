@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="diretivas">
+<head>
+	<meta charset="UTF-8">
+	<title>Diretivas e Filtros</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+	<script src="https://code.angularjs.org/1.4.4/i18n/angular-locale_pt-br.js"></script>
+	<script src="script.js"></script>	
+</head>
+<body ng-controller="filtrosCtrl">
+	{{ name | uppercase }} - {{money | currency:'R$ ':3}} - {{1288323623006 | date:'medium'}} - {{ 'Wellington' | reverse}}
+</body>
+</html>

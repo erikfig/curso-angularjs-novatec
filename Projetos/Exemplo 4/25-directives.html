@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="Diretivas">
+<head>
+	<meta charset="UTF-8">
+	<title>Cursos de AngularJs</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+	<script>
+	var diretivas = angular.module('Diretivas', []);
+
+	diretivas.controller('DiretivasController', function($scope) {
+		$scope.evento = function (msg) {
+			alert(msg);
+		}
+	});
+</script>
+</head>
+<body ng-controller="DiretivasController">
+
+	<ul>
+		<li>ng-app</li>
+		<li>ng-model</li>
+		<li>ng-controller</li>
+		<li>ng-bind -Angular Expression-</li>
+		<li>ng-class</li>
+		<li>ng-show</li>
+		<li>ng-hide</li>
+		<li>ng-repeat</li>
+		<li>ng-src e ng-href</li>
+		<li>ng-{evento}
+			<ol>
+				<li ng-click="evento('click')">ng-click</li>
+				<li>ng-blur</li>
+				<li>ng-change</li>
+				<li ng-dblclick="evento('Duplo click')">ng-dblclick</li>
+				<li>ng-focus</li>
+				<li>ng-keydown <input type="text" ng-keydown="evento('Tecla pressionada')"></li>
+				<li>ng-keypress</li>
+				<li>ng-keyup</li>
+				<li>ng-mousedown</li>
+				<li>ng-mouseup</li>
+				<li>ng-mouseenter</li>
+				<li>ng-mouseleave</li>
+				<li>ng-mousemove</li>
+				<li>ng-mouseover</li>
+				<li>ng-submit</li>
+			</ol>
+		</li>
+	</ul>
+</body>
+</html>

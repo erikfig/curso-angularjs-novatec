@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='diretivas'>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+	<script src="script.js"></script>
+	<meta charset="UTF-8">
+	<title>Exemplo 4</title>
+</head>
+<body>
+	<div ng-controller="Controller">
+		Hello <input ng-model='name'> <hr/>
+		<span ng-bind="name"></span> <br/>
+		<span ng:bind="name"></span> <br/>
+		<span ng_bind="name"></span> <br/>
+		<span data-ng-bind="name"></span> <br/>
+		<span x-ng-bind="name"></span> <br/>
+
+		<hr>
+		
+		<div ng-controller="NaomiController">
+			<my-customer maxlength="3"></my-customer>
+		</div>
+		<hr>
+		<div ng-controller="IgorController">
+			<my-customer name="naomi"></my-customer>
+		</div>
+	</div>
+</body>
+</html>
