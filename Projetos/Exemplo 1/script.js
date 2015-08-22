@@ -1,14 +1,14 @@
 var helloWorld = angular.module('HelloWorld', []);
 
-helloWorld.controller('MestreCtrl', function($scope){
+helloWorld.controller('MestreCtrl', ['$scope', function($scope){
 	$scope.visible = true;
 	$scope.toggle = function(b)
 	{
 		$scope.visible = b;
 	}
-});
+}]);
 
-helloWorld.controller('helloWorldCtrl', function($scope){
+helloWorld.controller('helloWorldCtrl',['$scope', function(a){
 	var list = [
 		{name: 'Alexandre', idade: 22},
 		{name: 'Alex', idade: 33},
@@ -16,20 +16,20 @@ helloWorld.controller('helloWorldCtrl', function($scope){
 	];
 
 
-	$scope.inserir = function(){
-		$scope.list.push($scope.obj);
-		$scope.obj = null;
+	a.inserir = function(){
+		a.list.push(a.obj);
+		a.obj = null;
 	}
 
-	$scope.remover = function(k) {
+	a.remover = function(k) {
 
-		$scope.list.splice(k, 1);
+		a.list.splice(k, 1);
 	}
 
-	$scope.list = list;
-});
+	a.list = list;
+}]);
 
-helloWorld.controller('helloWorldNames', function($scope){
+helloWorld.controller('helloWorldNames', ['$scope', function($scope){
 	$scope.name = '';
 	$scope.lastname = '';
 
@@ -37,4 +37,4 @@ helloWorld.controller('helloWorldNames', function($scope){
 	{
 		$scope.fullName = $scope.name + ' ' + $scope.lastname;
 	}
-});
+}]);
