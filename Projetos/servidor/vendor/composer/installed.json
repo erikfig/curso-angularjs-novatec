@@ -490,5 +490,52 @@
             "orm",
             "sql"
         ]
+    },
+    {
+        "name": "illuminate/events",
+        "version": "v5.1.8",
+        "version_normalized": "5.1.8.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/illuminate/events.git",
+            "reference": "e10687896023649477a3f8617f3f4abfb39043ac"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/illuminate/events/zipball/e10687896023649477a3f8617f3f4abfb39043ac",
+            "reference": "e10687896023649477a3f8617f3f4abfb39043ac",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/container": "5.1.*",
+            "illuminate/contracts": "5.1.*",
+            "illuminate/support": "5.1.*",
+            "php": ">=5.5.9"
+        },
+        "time": "2015-06-29 08:51:25",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Illuminate\\Events\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylorotwell@gmail.com"
+            }
+        ],
+        "description": "The Illuminate Events package.",
+        "homepage": "http://laravel.com"
     }
 ]
