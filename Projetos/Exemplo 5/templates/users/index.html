@@ -1,3 +1,22 @@
 <h1>Lista de usuários</h1>
 
+<table ng-init="list()">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>nome</th>
+			<th>email</th>
+			<th>ações</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="user in users">
+			<td>{{user.id}}</td>
+			<td>{{user.name}}</td>
+			<td>{{user.email}}</td>
+			<td><a ng-href="/#/users/{{user.id}}">Ver</a> <a ng-href="/#/users/edit/{{user.id}}">Editar</a> <a href="">Remover</a></td>
+		</tr>
+	</tbody>
+</table>
+
 <a href="/#/users/1">Ver registro</a>

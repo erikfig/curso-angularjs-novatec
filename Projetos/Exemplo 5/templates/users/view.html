@@ -1,3 +1,11 @@
 <h1>Exibindo usuários</h1>
 
+{{users}}
+
+<div ng-init="view()">
+	<ul>
+		<li ng-repeat="(k, v) in user"><strong>{{k}}:</strong> {{v}}</li>
+	</ul>
+</div>
+
 <a href="/#/users">Voltar</a>

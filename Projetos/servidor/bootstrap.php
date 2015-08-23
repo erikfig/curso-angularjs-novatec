@@ -1,5 +1,8 @@
 <?php
 
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
+
 require 'vendor/autoload.php';
 
 use Illuminate\Database\Capsule\Manager as Capsule;

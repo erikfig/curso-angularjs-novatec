@@ -1,4 +1,4 @@
-var usersModel = angular.module('usersModel', ['ngRoute']);
+var usersModel = angular.module('usersModel', ['ngRoute', 'ngResource']);
 
 usersModel.config(function($routeProvider){
 	$routeProvider
@@ -19,6 +19,27 @@ usersModel.config(function($routeProvider){
 
 });
 
-usersModel.controller('usersCtrl', ['$scope', function($scope){
-	alert('teste');
+usersModel.factory('usersFactory', ['$resource', function ($resource) {
+	return $resource(
+		'http://localhost:8080/users/:id',
+		null,
+		{
+			'update': {
+				method: 'PUT'
+			}
+		}
+	);
+}]);
+
+usersModel.controller('usersCtrl', ['$scope', 'usersFactory', '$routeParams', function($scope, usersFactory, $routeParams){
+
+	$scope.list = function()
+	{
+		$scope.users = usersFactory.query();
+	}
+
+	$scope.view = function()
+	{
+		$scope.user = usersFactory.get({id:$routeParams.id});
+	}
 }]);
