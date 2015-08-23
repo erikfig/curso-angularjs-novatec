@@ -55,17 +55,22 @@ usersModel.controller('usersCtrl', ['$scope', 'usersFactory', '$routeParams', '$
 
 	$scope.save = function() {
 		if ($routeParams.id)
-			usersFactory.update({id:$routeParams.id}, $scope.user);
+			usersFactory.update({id:$routeParams.id}, $scope.user, function() {
+				$location.path('/users');
+			});
 		else
-			usersFactory.save(null, $scope.user);
-		$location.path('/users');
+			usersFactory.save(null, $scope.user, function() {
+				$location.path('/users');
+			});
+		
 	}
 
 	$scope.delete = function(id) {
 		if (confirm('Tem certeza que quer remover?')) {
-			usersFactory.delete({id:id});
+			usersFactory.delete({id:id}, function() {
+				$location.path('/users');
+			});
 			$scope.list();
 		}
-		$location.path('/users');
 	}
 }]);

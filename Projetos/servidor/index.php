@@ -16,7 +16,7 @@ $app->get('/users', function() {
 
 $app->get('/users/:id', function($id) {
 	$data = User::where('id', $id)->first();
-	echo json_encode($data->toArray);
+	echo json_encode($data->toArray());
 });
 
 $app->post('/users', function() {
