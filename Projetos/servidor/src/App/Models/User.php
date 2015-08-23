@@ -8,6 +8,8 @@ class User extends Model
 {
 	public $fillable = ['name', 'email', 'password', 'idade', 'telefone'];
 
+	public $timestamps = false;
+
 	public function setPasswordAttribute($value)
 	{
 		$this->attributes['password'] = password_hash($value, PASSWORD_BCRYPT);

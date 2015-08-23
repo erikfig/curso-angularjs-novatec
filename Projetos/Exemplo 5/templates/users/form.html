@@ -1,3 +1,12 @@
-<h1>Editando usuários</h1>
+<h1>{{ titleForm }}</h1>
+
+<form ng-submit="save()" ng-init="view()">
+	Nome: <input type="text" ng-model="user.name"><br>
+	Email: <input type="text" ng-model="user.email"><br>
+	Senha: <input type="text" ng-model="user.password"><br>
+	Idade: <input type="text" ng-model="user.idade"><br>
+	Telefone: <input type="text" ng-model="user.telefone"><br>
+	<input type="submit" value="salvar">
+</form>
 
 <a href="/#/users">Voltar</a>

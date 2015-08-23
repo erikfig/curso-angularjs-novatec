@@ -2,6 +2,10 @@ var usersModel = angular.module('usersModel', ['ngRoute', 'ngResource']);
 
 usersModel.config(function($routeProvider){
 	$routeProvider
+		.when('/users/add', {
+			templateUrl: 'templates/users/form.html',
+			controller: 'usersCtrl'
+		})
 		.when('/users/:id', {
 			templateUrl: 'templates/users/view.html',
 			controller: 'usersCtrl'
@@ -31,7 +35,7 @@ usersModel.factory('usersFactory', ['$resource', function ($resource) {
 	);
 }]);
 
-usersModel.controller('usersCtrl', ['$scope', 'usersFactory', '$routeParams', function($scope, usersFactory, $routeParams){
+usersModel.controller('usersCtrl', ['$scope', 'usersFactory', '$routeParams', '$location', function($scope, usersFactory, $routeParams, $location){
 
 	$scope.list = function()
 	{
@@ -40,6 +44,28 @@ usersModel.controller('usersCtrl', ['$scope', 'usersFactory', '$routeParams', fu
 
 	$scope.view = function()
 	{
-		$scope.user = usersFactory.get({id:$routeParams.id});
+		if ($routeParams.id) {
+			$scope.user = usersFactory.get({id:$routeParams.id});
+			$scope.titleForm = 'Ediando usuário';
+		} else {
+			$scope.user = null;
+			$scope.titleForm = 'Criando usuário';
+		}
+	}
+
+	$scope.save = function() {
+		if ($routeParams.id)
+			usersFactory.update({id:$routeParams.id}, $scope.user);
+		else
+			usersFactory.save(null, $scope.user);
+		$location.path('/users');
+	}
+
+	$scope.delete = function(id) {
+		if (confirm('Tem certeza que quer remover?')) {
+			usersFactory.delete({id:id});
+			$scope.list();
+		}
+		$location.path('/users');
 	}
 }]);

@@ -1,9 +1,10 @@
 <?php
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: *");
-
 require 'vendor/autoload.php';
+
+header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Headers: DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type');
+header('Access-Control-Allow-Methods: GET, POST, PUT, OPTIONS, DELETE');
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Events\Dispatcher;
